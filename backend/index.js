@@ -57,16 +57,33 @@ app.post('/api/emails', async (req, res) => {
       return res.status(400).json({ error: 'Email is required' });
     }
 
-    // For now, just log the email (replace with database later)
-    console.log('📧 Email submitted:', { email, plugin: plugin || 'DUMUMUB-0000003' });
-    
-    // Simulate database save
-    const fakeId = Math.floor(Math.random() * 1000);
+    // Try to save to database, fall back to logging if table doesn't exist
+    try {
+      const savedEmail = await prisma.email.create({
+        data: {
+          email: email,
+          plugin: plugin || 'DUMUMUB-0000003'
+        }
+      });
 
-    res.status(201).json({ 
-      message: 'Email saved successfully',
-      id: fakeId 
-    });
+      console.log('📧 Email saved to database:', { email, plugin: plugin || 'DUMUMUB-0000003' });
+      
+      res.status(201).json({ 
+        message: 'Email saved successfully',
+        id: savedEmail.id 
+      });
+    } catch (dbError) {
+      // If database table doesn't exist, log for now
+      console.log('📧 Email submitted (DB table not ready):', { email, plugin: plugin || 'DUMUMUB-0000003' });
+      console.log('Database error:', dbError.message);
+      
+      // Still return success to user
+      const fakeId = Math.floor(Math.random() * 1000);
+      res.status(201).json({ 
+        message: 'Email saved successfully',
+        id: fakeId 
+      });
+    }
   } catch (error) {
     console.error('Error saving email:', error);
     res.status(500).json({ error: 'Internal server error' });

@@ -19,7 +19,7 @@ const EmailModal = ({ onClose }) => {
                 plugin: 'DUMUMUB-0000003'
             });
 
-            setMessage('thankyou for supporting dumumub');
+            setMessage('thanks for your support');
             setTimeout(() => {
                 onClose();
             }, 4000);
