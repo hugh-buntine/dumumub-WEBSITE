@@ -22,7 +22,7 @@ function App() {
   const title1 = "DUMUMUB-0000003";
   const info1 = "wavetable synthesizer plug-in";
   const img1 = "../public/DUMUMUB-0000003_IMAGE.png";
-  const link1 = "../../../../public/dumumub-0000003-download.zip";
+  const link1 = "http://localhost:5001/api/download/dumumub-0000003";
   const buttonText1 = "download";
 
   const title2 = "more soon...";
