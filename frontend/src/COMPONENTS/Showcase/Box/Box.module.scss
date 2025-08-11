@@ -1,0 +1,18 @@
+@use '../../../style.scss' as *;
+
+.Box {
+    padding: 0px;
+    //background: linear-gradient(to right, rgba(0, 0, 0, 0) 30%, rgba($white1, 1) 70%, rgba($white1, 1) 100%);
+    background-color: rgb($white1, 0.1);
+    height: 100%;
+    width: 100%;
+    translate: 5vw;
+    animation: fadeInFromRight 1s ease-in-out, pulse 5s infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border-radius: 10px; /* Add rounded corners */
+
+    &:hover {
+        box-shadow: 1vw 1vw 16px rgba(0, 0, 0, 0.45);
+        background-color: rgba($black1, 0.05);
+    }
+}

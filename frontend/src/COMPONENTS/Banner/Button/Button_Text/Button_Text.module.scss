@@ -1,0 +1,29 @@
+@use '../../../../style.scss' as *;
+
+@keyframes fadeInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.Button_Text {
+    padding: 0px;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2vw;
+    color: $white1;
+    font-family: $buttonFont;
+    width: 20vw;
+    max-width: 250px;
+    font-weight: 100;
+    animation: fadeInFromRight 1s ease-in-out;
+    letter-spacing: 0.4em; // Adjust the value as needed
+    pointer-events: none;
+}

@@ -1,0 +1,11 @@
+@use '../../../../style.scss' as *;
+
+.Title {
+    padding: 0px;
+    color: $black1;
+    font-family: $showcaseFont;
+    font-weight: 100;
+    font-size: 3vw;
+    letter-spacing: 0.4em; // Adjust the value as needed
+    pointer-events: none;
+}

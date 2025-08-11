@@ -1,0 +1,14 @@
+@use '../../../../style.scss' as *;
+
+.Info {
+    padding: 0px;
+    color: $black1;
+    font-family: $showcaseFont;
+    font-weight: 300;
+    letter-spacing: 0.4em; // Adjust the value as needed
+    font-size: 1vw;
+}
+
+.noPointerEvents {
+    pointer-events: none;
+}

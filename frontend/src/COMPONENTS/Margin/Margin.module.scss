@@ -1,0 +1,14 @@
+@use '../../style.scss' as *;
+
+.Margin {
+    display: flex;  /* Enable Flexbox layout */
+    flex-direction: column;  /* Stack items vertically */
+    justify-content: space-between;  /* Distribute items evenly with equal spacing */
+    padding: 20px;
+    color: $black1;
+    height: 100%;  
+    position: fixed;  /* Fix the position to the viewport */
+    left: 0;  /* Align to the left */
+    top: 0;  /* Align to the top */
+    background-color: $white1;
+}

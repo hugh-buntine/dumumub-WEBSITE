@@ -1,0 +1,12 @@
+@use '../../../style.scss' as *;
+
+.Text {
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    max-width: calc(50vw - 20px);
+    text-align: right;
+    pointer-events: none;
+}

@@ -1,0 +1,118 @@
+@use '../../../../style.scss' as *;
+
+.LineRed {
+    padding: 0px;
+    position: absolute;
+    text-align: center;
+    transform: translateX(-100%);
+    background-color: rgba($red, 1);
+    height: 100vh;
+    width: 20vw;
+    max-width: 250px;
+    z-index: -1;
+    opacity: 0; 
+    animation: fadeIn 6s forwards; 
+}
+.LineGreen {
+    padding: 0px;
+    position: absolute;
+    text-align: center;
+    transform: translateX(-100%);
+    background-color: rgba($green, 1);
+    height: 100vh;
+    width: 20vw;
+    max-width: 250px;
+    z-index: -1;
+    opacity: 0; 
+    animation: fadeIn 6s forwards; 
+}
+.LineBlue {
+    padding: 0px;
+    position: absolute;
+    text-align: center;
+    transform: translateX(-100%);
+    background-color: rgba($blue, 1);
+    height: 100vh;
+    width: 20vw;
+    max-width: 250px;
+    z-index: -1;
+    opacity: 0; 
+    animation: fadeIn 6s forwards; 
+}
+.CircleRed {
+    padding: 0px;
+    position: absolute;
+    text-align: center;
+    transform: translate(-100%, -50%);
+    background-color: rgba($red, 1);
+    width: 20vw;
+    aspect-ratio: 1 / 1; // Maintain a 1:1 aspect ratio
+    max-width: 250px;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0; 
+    animation: fadeIn 1s forwards; 
+}
+.CircleGreen {
+    padding: 0px;
+    position: absolute;
+    text-align: center;
+    transform: translate(-100%, -50%);
+    background-color: rgba($green, 1);
+    width: 20vw;
+    aspect-ratio: 1 / 1; // Maintain a 1:1 aspect ratio
+    max-width: 250px;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0; 
+    animation: fadeIn 1s forwards; 
+}
+.CircleBlue {
+    padding: 0px;
+    position: absolute;
+    text-align: center;
+    transform: translate(-100%, -50%);
+    background-color: rgba($blue, 1);
+    width: 20vw;
+    aspect-ratio: 1 / 1; // Maintain a 1:1 aspect ratio
+    max-width: 250px;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0; 
+    animation: fadeIn 1s forwards; 
+}
+.Info {
+    padding: 0.5vw;
+    position: absolute;
+    text-align: justify; /* Justify text to fill the width of the container */
+    transform: translate(-100%, calc((min(20vw, 250px) / 2) + 10vh));
+    width: 20vw;
+    max-width: 250px;
+    z-index: -1;
+    opacity: 0; 
+    animation: fadeIn 6s forwards; 
+
+    font-family: $infoFont;
+    color: $white1;
+    font-size: 0.8vw;
+    font-weight: 100;
+    letter-spacing: 0.4em;
+
+    word-wrap: break-word; /* Ensures long words break to fit within the width */
+    overflow: hidden; /* Hides any overflow text */
+    white-space: pre-wrap; /* Preserve whitespace and line breaks */
+}
+
+/* Add a pseudo-element to ensure the last line is justified */
+.Info::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1; // End with the circle fully visible
+    }
+}
+

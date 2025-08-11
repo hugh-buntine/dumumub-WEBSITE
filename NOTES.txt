@@ -1,0 +1,4 @@
+RUN FRONTEND - npm run dev
+RUN BACKEND - npm start
+
+rc -> enter -- types out new react component

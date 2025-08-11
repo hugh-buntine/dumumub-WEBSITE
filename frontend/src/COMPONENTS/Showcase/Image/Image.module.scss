@@ -1,0 +1,22 @@
+@use '../../../style.scss' as *;
+
+.Image {
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+}
+
+.ShowcaseImage {
+    left: calc(5vw);
+    width: fit-content;
+    max-width: calc(50vw );
+    max-height: calc(100%);
+    position: absolute;
+    z-index: 500;
+    opacity: 1;
+    border-radius: 0.7%; /* Add rounded corners */
+    box-shadow: 1vw 1vw 8px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
