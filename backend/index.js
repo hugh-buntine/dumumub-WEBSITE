@@ -10,35 +10,9 @@ const app = express();
 const port = process.env.PORT || 5001;
 const prisma = new PrismaClient();
 
-// CORS configuration
+// CORS configuration - simplified for debugging
 const corsOptions = {
-  origin: function (origin, callback) {
-    // Always allow production domains regardless of NODE_ENV
-    const allowedOrigins = [
-      'https://dumumub.com', 
-      'https://dumumubcom.vercel.app',
-      'http://localhost:5173', 
-      'http://localhost:5174', 
-      'http://localhost:3000'
-    ];
-    
-    console.log(`🌐 CORS check - Origin: ${origin}, NODE_ENV: ${process.env.NODE_ENV}`);
-    console.log(`🌐 Allowed origins:`, allowedOrigins);
-    
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) {
-      console.log('✅ No origin - allowing request');
-      return callback(null, true);
-    }
-    
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      console.log('✅ Origin allowed');
-      callback(null, true);
-    } else {
-      console.log('❌ Origin rejected');
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: true, // Allow all origins for now to test
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'],
