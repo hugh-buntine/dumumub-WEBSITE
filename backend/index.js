@@ -13,16 +13,29 @@ const prisma = new PrismaClient();
 // CORS configuration
 const corsOptions = {
   origin: function (origin, callback) {
-    const allowedOrigins = process.env.NODE_ENV === 'production' 
-      ? ['https://dumumub.com', 'https://dumumubcom.vercel.app']
-      : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'];
+    // Always allow production domains regardless of NODE_ENV
+    const allowedOrigins = [
+      'https://dumumub.com', 
+      'https://dumumubcom.vercel.app',
+      'http://localhost:5173', 
+      'http://localhost:5174', 
+      'http://localhost:3000'
+    ];
+    
+    console.log(`🌐 CORS check - Origin: ${origin}, NODE_ENV: ${process.env.NODE_ENV}`);
+    console.log(`🌐 Allowed origins:`, allowedOrigins);
     
     // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
+    if (!origin) {
+      console.log('✅ No origin - allowing request');
+      return callback(null, true);
+    }
     
     if (allowedOrigins.indexOf(origin) !== -1) {
+      console.log('✅ Origin allowed');
       callback(null, true);
     } else {
+      console.log('❌ Origin rejected');
       callback(new Error('Not allowed by CORS'));
     }
   },
