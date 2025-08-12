@@ -23,13 +23,13 @@ function App() {
   // SHOWCASE STUFF
   const title1 = "DUMUMUB-0000003";
   const info1 = "wavetable synthesizer plug-in";
-  const img1 = "../public/DUMUMUB-0000003_IMAGE.png";
+  const img1 = "/DUMUMUB-0000003_IMAGE.png";
   const link1 = `${API_BASE_URL}/api/download/dumumub-0000003`;
   const buttonText1 = "download";
 
   const title2 = "DUMUMUB-0000004";
   const info2 = "frequency manipulation plug-in";
-  const img2 = "../public/DUMUMUB-0000004_IMAGE.png";
+  const img2 = "/DUMUMUB-0000004_IMAGE.png";
   const link2 = `${API_BASE_URL}/api/download/dumumub-0000004`;
   const buttonText2 = "download";
 
