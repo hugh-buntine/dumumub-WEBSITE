@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 // CORS configuration
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
-    ? process.env.FRONTEND_URL 
+    ? ['https://dumumub.com', 'https://dumumubcom.vercel.app', process.env.FRONTEND_URL]
     : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
   credentials: true,
 };
