@@ -15,8 +15,10 @@ const EmailModal = ({ onClose, plugin }) => {
         setIsSubmitting(true);
         setMessage('');
 
+        console.log('API_BASE_URL:', API_BASE_URL);
         console.log('Submitting email to:', `${API_BASE_URL}/api/emails`);
         console.log('Email data:', { email, plugin: plugin || 'DUMUMUB-0000003' });
+        console.log('Environment:', import.meta.env);
 
         try {
             const response = await axios.post(`${API_BASE_URL}/api/emails`, {
