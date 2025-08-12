@@ -4,7 +4,7 @@ import styles from './Button.module.scss';
 import EmailModal from './EmailModal/EmailModal'; // Import the modal component
 
 const Button = (props) => {
-    const { link, buttonText } = props;
+    const { link, buttonText, title } = props;
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleDownload = () => {
@@ -37,7 +37,7 @@ const Button = (props) => {
             <div className={styles.Button} onClick={handleDownload}>
                 {buttonText}
             </div>
-            {isModalOpen && <EmailModal onClose={handleCloseModal} />}
+            {isModalOpen && <EmailModal onClose={handleCloseModal} plugin={title} />}
         </div>
     );
 };
@@ -45,6 +45,7 @@ const Button = (props) => {
 Button.propTypes = {
     link: PropTypes.string.isRequired,
     buttonText: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
 };
 
 export default Button;

@@ -20,7 +20,7 @@ const Showcase = (props) => {
         <Box/>
         <Text title={title} info={info}/>
         <Image img={img}/>
-        <Button link={link} buttonText={buttonText}/>
+        <Button link={link} buttonText={buttonText} title={title}/>
 
     </div>
   );

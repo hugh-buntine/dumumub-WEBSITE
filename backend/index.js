@@ -30,7 +30,8 @@ app.get('/api/download/:filename', (req, res) => {
   
   // Security: only allow specific files
   const allowedFiles = {
-    'dumumub-0000003': 'dumumub-0000003-download.zip'
+    'dumumub-0000003': 'dumumub-0000003-download.zip',
+    'dumumub-0000004': 'dumumub-0000004-download.zip'
   };
   
   if (!allowedFiles[filename]) {
@@ -59,14 +60,41 @@ app.post('/api/emails', async (req, res) => {
 
     // Try to save to database, fall back to logging if table doesn't exist
     try {
-      const savedEmail = await prisma.email.create({
-        data: {
-          email: email,
-          plugin: plugin || 'DUMUMUB-0000003'
-        }
+      const pluginName = plugin || 'unknown';
+      
+      // Check if email already exists
+      const existingEmail = await prisma.email.findUnique({
+        where: { email: email }
       });
 
-      console.log('📧 Email saved to database:', { email, plugin: plugin || 'DUMUMUB-0000003' });
+      let savedEmail;
+      
+      if (existingEmail) {
+        // Email exists, add plugin to the array if not already there
+        if (!existingEmail.plugins.includes(pluginName)) {
+          savedEmail = await prisma.email.update({
+            where: { email: email },
+            data: {
+              plugins: {
+                push: pluginName
+              }
+            }
+          });
+          console.log('📧 Plugin added to existing email:', { email, newPlugin: pluginName, allPlugins: savedEmail.plugins });
+        } else {
+          console.log('📧 Plugin already downloaded by this email:', { email, plugin: pluginName });
+          savedEmail = existingEmail;
+        }
+      } else {
+        // New email, create entry with first plugin
+        savedEmail = await prisma.email.create({
+          data: {
+            email: email,
+            plugins: [pluginName]
+          }
+        });
+        console.log('📧 New email saved to database:', { email, plugins: savedEmail.plugins });
+      }
       
       res.status(201).json({ 
         message: 'Email saved successfully',
@@ -74,7 +102,7 @@ app.post('/api/emails', async (req, res) => {
       });
     } catch (dbError) {
       // If database table doesn't exist, log for now
-      console.log('📧 Email submitted (DB table not ready):', { email, plugin: plugin || 'DUMUMUB-0000003' });
+      console.log('📧 Email submitted (DB table not ready):', { email, plugin: plugin || 'unknown' });
       console.log('Database error:', dbError.message);
       
       // Still return success to user

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import styles from './EmailModal.module.scss';
 
-const EmailModal = ({ onClose }) => {
+const EmailModal = ({ onClose, plugin }) => {
     const [email, setEmail] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState('');
@@ -16,7 +16,7 @@ const EmailModal = ({ onClose }) => {
         try {
             const response = await axios.post('http://localhost:5001/api/emails', {
                 email: email,
-                plugin: 'DUMUMUB-0000003'
+                plugin: plugin || 'DUMUMUB-0000003'
             });
 
             setMessage('thanks for your support');
@@ -68,6 +68,7 @@ const EmailModal = ({ onClose }) => {
 
 EmailModal.propTypes = {
     onClose: PropTypes.func.isRequired,
+    plugin: PropTypes.string.isRequired,
 };
 
 export default EmailModal;

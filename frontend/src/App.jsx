@@ -25,11 +25,17 @@ function App() {
   const link1 = "http://localhost:5001/api/download/dumumub-0000003";
   const buttonText1 = "download";
 
-  const title2 = "more soon...";
-  const info2 = "hopefully";
-  const img2 = "";
-  const link2 = "";
-  const buttonText2 = "";
+  const title2 = "DUMUMUB-0000004";
+  const info2 = "frequency manipulation plug-in";
+  const img2 = "../public/DUMUMUB-0000004_IMAGE.png";
+  const link2 = "http://localhost:5001/api/download/dumumub-0000004";
+  const buttonText2 = "download";
+
+  const title3 = "more soon...";
+  const info3 = "hopefully";
+  const img3 = "";
+  const link3 = "";
+  const buttonText3 = "";
 
   return (
     <div>
@@ -45,11 +51,19 @@ function App() {
           <Showcase title={title1} info={info1} img={img1} link={link1} buttonText={buttonText1}/>
           <div className={styles.showcaseGap}></div>
           <Showcase title={title2} info={info2} img={img2} link={link2} buttonText={buttonText2}/>
+          <div className={styles.showcaseGap}></div>
+          <Showcase title={title3} info={info3} img={img3} link={link3} buttonText={buttonText3}/>
+          <div className={styles.showcaseGap}></div>
+          <div className={styles.footer}>
+            <p>© 2025 dumumub</p>
+            <p>all rights reserved</p>
+            <p>made with ❤️ by dumumub</p>
+          </div>
+
         </div>
-        
-     </div>
-    </div>
-    
+      </div>
+      </div>
+
   );
 }
 

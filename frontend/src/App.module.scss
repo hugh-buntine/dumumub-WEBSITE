@@ -28,3 +28,16 @@
   height: 20vh;
   max-height: 15vw;
 }
+
+.footer {
+  font-family: $showcaseFont;
+  color: $black1;
+  text-align: center;
+  padding: 2rem 0;
+  letter-spacing: 1.8em;
+  
+  p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+}

@@ -17,7 +17,7 @@ model Email {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   createdAt DateTime @default(now())
-  plugin    String?  // Track which plugin they wanted to download
+  plugins   String[] @default([]) // Array of plugin names they've downloaded
   
   @@map("emails")
 }
