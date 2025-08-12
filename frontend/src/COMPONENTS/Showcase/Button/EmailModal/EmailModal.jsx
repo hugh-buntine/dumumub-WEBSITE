@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import styles from './EmailModal.module.scss';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001';
+
 const EmailModal = ({ onClose, plugin }) => {
     const [email, setEmail] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,12 +15,16 @@ const EmailModal = ({ onClose, plugin }) => {
         setIsSubmitting(true);
         setMessage('');
 
+        console.log('Submitting email to:', `${API_BASE_URL}/api/emails`);
+        console.log('Email data:', { email, plugin: plugin || 'DUMUMUB-0000003' });
+
         try {
-            const response = await axios.post('http://localhost:5001/api/emails', {
+            const response = await axios.post(`${API_BASE_URL}/api/emails`, {
                 email: email,
                 plugin: plugin || 'DUMUMUB-0000003'
             });
 
+            console.log('Response:', response.data);
             setMessage('thanks for your support');
             setTimeout(() => {
                 onClose();

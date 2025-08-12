@@ -5,12 +5,14 @@ import Banner from './COMPONENTS/Banner/Banner';
 import Showcase from './COMPONENTS/Showcase/Showcase';
 import BackgroundText from './COMPONENTS/BackgroundText/BackgroundText';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001';
+
 function App() {
   const [backendTest, setBackendTest] = useState('');
 
   useEffect(() => {
     // Fetch data from the backend API
-    fetch('http://localhost:5001/test')
+    fetch(`${API_BASE_URL}/test`)
       .then((response) => response.text()) 
       .then((data) => setBackendTest(data)) 
       .catch((error) => console.error('Error fetching data:', error));
@@ -22,13 +24,13 @@ function App() {
   const title1 = "DUMUMUB-0000003";
   const info1 = "wavetable synthesizer plug-in";
   const img1 = "../public/DUMUMUB-0000003_IMAGE.png";
-  const link1 = "http://localhost:5001/api/download/dumumub-0000003";
+  const link1 = `${API_BASE_URL}/api/download/dumumub-0000003`;
   const buttonText1 = "download";
 
   const title2 = "DUMUMUB-0000004";
   const info2 = "frequency manipulation plug-in";
   const img2 = "../public/DUMUMUB-0000004_IMAGE.png";
-  const link2 = "http://localhost:5001/api/download/dumumub-0000004";
+  const link2 = `${API_BASE_URL}/api/download/dumumub-0000004`;
   const buttonText2 = "download";
 
   const title3 = "more soon...";

@@ -3,12 +3,23 @@ const cors = require('cors');
 const path = require('path');
 const { PrismaClient } = require('@prisma/client');
 
+// Load environment variables
+require('dotenv').config();
+
 const app = express();
 const port = process.env.PORT || 5001;
 const prisma = new PrismaClient();
 
+// CORS configuration
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.FRONTEND_URL 
+    : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
+  credentials: true,
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json()); // Parse JSON bodies
 
 // Serve static files from public directory
