@@ -12,7 +12,7 @@ const Banner = () => {
     const button2info = "dumumub-0000003:\n\na wavetable synthesizer that allows the user to create and manipulate wavetables by dragging and dropping audio files and images or drawing in their wave directly onto the plug-in\n\n\ndumumub-0000004:\n\na frequency manipulation tool that allows the user to drag and drop frequency information of an incoming signal in real time\n\nmore plugins coming soon";
 
     const button3Text = "contact";
-    const button3info = "email:\nhi@dumumub.com\n\ninstagram:\n@dumumub";
+    const button3info = "email:\nhi@dumumub.com (soon)\n\ninstagram:\n@dumumub";
 
 
     return (

@@ -10,9 +10,16 @@ const app = express();
 const port = process.env.PORT || 5001;
 const prisma = new PrismaClient();
 
-// CORS configuration - simplified for debugging
+// CORS configuration - allow production domains
 const corsOptions = {
-  origin: true, // Allow all origins for now to test
+  origin: [
+    'https://dumumub.com',
+    'https://www.dumumub.com', 
+    'https://dumumubcom.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://localhost:3000'
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'],
