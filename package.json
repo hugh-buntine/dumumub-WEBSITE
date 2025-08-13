@@ -1,14 +1,14 @@
 {
-  "name": "website",
+  "name": "dumumub-website",
   "version": "1.0.0",
+  "description": "Experimental audio plugin distribution platform with React frontend and Express backend",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": ["audio", "plugins", "vst", "react", "express", "fullstack"],
+  "author": "Hugh Buntine",
+  "license": "MIT",
   "devDependencies": {
     "vercel": "^41.3.1"
   }
