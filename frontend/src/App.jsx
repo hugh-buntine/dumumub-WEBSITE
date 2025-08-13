@@ -19,13 +19,46 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001
 
 function App() {
   const [backendTest, setBackendTest] = useState('');
+  const [isBackendReady, setIsBackendReady] = useState(false);
+  const [isWakingUp, setIsWakingUp] = useState(true);
 
-  // Test backend connectivity on component mount
+  // Test backend connectivity and wake up sleeping service on component mount
   useEffect(() => {
-    fetch(`${API_BASE_URL}/test`)
-      .then((response) => response.text()) 
-      .then((data) => setBackendTest(data)) 
-      .catch((error) => console.error('Backend connectivity test failed:', error));
+    // Primary health check - wakes up Render service if sleeping
+    const wakeUpBackend = async () => {
+      try {
+        console.log('🔄 Waking up backend service...');
+        const response = await fetch(`${API_BASE_URL}/test`, {
+          method: 'GET',
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        });
+        const data = await response.text();
+        setBackendTest(data);
+        setIsBackendReady(true);
+        setIsWakingUp(false);
+        console.log('✅ Backend is awake:', data);
+      } catch (error) {
+        console.warn('⚠️ Backend wake-up failed (likely still starting):', error.message);
+        // Retry after a delay if initial wake-up fails
+        setTimeout(async () => {
+          try {
+            const retryResponse = await fetch(`${API_BASE_URL}/test`);
+            const retryData = await retryResponse.text();
+            setBackendTest(retryData);
+            setIsBackendReady(true);
+            setIsWakingUp(false);
+            console.log('✅ Backend awake on retry:', retryData);
+          } catch (retryError) {
+            console.error('❌ Backend wake-up retry failed:', retryError);
+            setIsWakingUp(false); // Stop loading even if failed
+          }
+        }, 3000);
+      }
+    };
+
+    wakeUpBackend();
   }, []);
 
   // Log backend connection status for debugging
@@ -41,8 +74,8 @@ function App() {
     title: "DUMUMUB-0000003",
     info: "wavetable synthesizer plug-in",
     img: "/DUMUMUB-0000003_IMAGE.png",
-    link: `${API_BASE_URL}/api/download/dumumub-0000003`,
-    buttonText: "download"
+    link: isBackendReady ? `${API_BASE_URL}/api/download/dumumub-0000003` : "",
+    buttonText: isWakingUp ? "preparing..." : "download"
   };
 
   // DUMUMUB-0000004: Frequency Manipulation Tool
@@ -50,8 +83,8 @@ function App() {
     title: "DUMUMUB-0000004",
     info: "frequency manipulation plug-in",
     img: "/DUMUMUB-0000004_IMAGE.png",
-    link: `${API_BASE_URL}/api/download/dumumub-0000004`,
-    buttonText: "download"
+    link: isBackendReady ? `${API_BASE_URL}/api/download/dumumub-0000004` : "",
+    buttonText: isWakingUp ? "preparing..." : "download"
   };
 
   // Placeholder for upcoming plugins
@@ -114,6 +147,11 @@ function App() {
             <p>© 2025 dumumub</p>
             <p>all rights reserved</p>
             <p>made with ❤️ by dumumub</p>
+            {isWakingUp && (
+              <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: '10px' }}>
+                🔄 preparing download servers...
+              </p>
+            )}
           </div>
         </div>
       </div>

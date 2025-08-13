@@ -27,6 +27,7 @@ An experimental audio plugin creation project featuring a modern, full-stack web
 - **Interactive UI**: Color-coded navigation with smooth animations and modal popups
 - **Seamless Downloads**: One-click plugin downloads with automatic email collection
 - **Email Management**: Smart email tracking system that prevents duplicates and tracks plugin downloads per user
+- **Backend Wake-up**: Automatically wakes up sleeping Render service when users visit the site for instant downloads
 - **Responsive Design**: Clean, minimalist aesthetic with custom SCSS styling
 - **Production Ready**: Deployed with custom domain, SSL, and optimized CORS handling
 
@@ -171,6 +172,12 @@ Response: "BACKEND IS CONNECTED TO FRONTEND"
 - Modal-based email capture triggered post-download
 - Smart duplicate detection and user feedback
 - Non-intrusive design that maintains user experience flow
+
+### 8. **Free Tier Optimization**
+- Automatic backend wake-up on page load to prevent cold start delays
+- Visual feedback during server preparation phase
+- Retry logic for failed wake-up attempts
+- Seamless user experience despite hosting limitations
 
 ## Future Enhancements & Roadmap
 
