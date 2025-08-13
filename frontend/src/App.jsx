@@ -122,8 +122,8 @@ function App() {
               <div className={styles.statusContent}>
                 <div className={styles.spinner}></div>
                 <div className={styles.statusText}>
-                  <h3>Preparing Download Service</h3>
-                  <p>Waking up servers for instant downloads... This takes just a moment.</p>
+                  <h3>preparing download service</h3>
+                  <p>waking up servers for instant downloads... this takes just a moment.</p>
                 </div>
               </div>
             </div>
@@ -135,8 +135,8 @@ function App() {
               <div className={styles.statusContent}>
                 <div className={styles.checkmark}>✓</div>
                 <div className={styles.statusText}>
-                  <h3>Downloads Ready!</h3>
-                  <p>All systems are now online. Click any plugin to download.</p>
+                  <h3>downloads ready!</h3>
+                  <p>all systems are now online. click any plugin to download.</p>
                 </div>
               </div>
             </div>
