@@ -1,8 +1,13 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+/**
+ * DUMUMUB Database Schema
+ * 
+ * Prisma schema for the DUMUMUB audio plugin platform.
+ * Defines the database structure for user email collection and plugin download tracking.
+ * 
+ * Database: PostgreSQL (via Supabase)
+ * ORM: Prisma
+ * Author: Hugh Buntine
+ */
 
 generator client {
   provider = "prisma-client-js"
@@ -13,11 +18,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+/**
+ * Email Model
+ * Stores user email addresses and tracks their plugin downloads.
+ * 
+ * Features:
+ * - Unique email constraint prevents duplicates
+ * - Array field tracks multiple plugin downloads per user
+ * - Automatic timestamp for user registration
+ */
 model Email {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  createdAt DateTime @default(now())
-  plugins   String[] @default([]) // Array of plugin names they've downloaded
+  id        Int      @id @default(autoincrement())  // Auto-incrementing primary key
+  email     String   @unique                        // User email address (unique constraint)
+  createdAt DateTime @default(now())                // Registration timestamp
+  plugins   String[] @default([])                   // Array of downloaded plugin names
   
-  @@map("emails")
+  @@map("emails") // Map to 'emails' table in database
 }
