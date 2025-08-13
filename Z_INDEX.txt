@@ -1,3 +1,0 @@
-500  - Image (in Showcase)
-1000 - Banner
-2000 - Email Modal
