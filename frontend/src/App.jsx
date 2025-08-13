@@ -21,6 +21,7 @@ function App() {
   const [backendTest, setBackendTest] = useState('');
   const [isBackendReady, setIsBackendReady] = useState(false);
   const [isWakingUp, setIsWakingUp] = useState(true);
+  const [showReadyMessage, setShowReadyMessage] = useState(false);
 
   // Test backend connectivity and wake up sleeping service on component mount
   useEffect(() => {
@@ -38,6 +39,9 @@ function App() {
         setBackendTest(data);
         setIsBackendReady(true);
         setIsWakingUp(false);
+        setShowReadyMessage(true);
+        // Hide success message after 3 seconds
+        setTimeout(() => setShowReadyMessage(false), 3000);
         console.log('✅ Backend is awake:', data);
       } catch (error) {
         console.warn('⚠️ Backend wake-up failed (likely still starting):', error.message);
@@ -49,6 +53,9 @@ function App() {
             setBackendTest(retryData);
             setIsBackendReady(true);
             setIsWakingUp(false);
+            setShowReadyMessage(true);
+            // Hide success message after 3 seconds
+            setTimeout(() => setShowReadyMessage(false), 3000);
             console.log('✅ Backend awake on retry:', retryData);
           } catch (retryError) {
             console.error('❌ Backend wake-up retry failed:', retryError);
@@ -75,7 +82,7 @@ function App() {
     info: "wavetable synthesizer plug-in",
     img: "/DUMUMUB-0000003_IMAGE.png",
     link: isBackendReady ? `${API_BASE_URL}/api/download/dumumub-0000003` : "",
-    buttonText: isWakingUp ? "preparing..." : "download"
+    buttonText: isWakingUp ? "servers starting..." : "download"
   };
 
   // DUMUMUB-0000004: Frequency Manipulation Tool
@@ -84,7 +91,7 @@ function App() {
     info: "frequency manipulation plug-in",
     img: "/DUMUMUB-0000004_IMAGE.png",
     link: isBackendReady ? `${API_BASE_URL}/api/download/dumumub-0000004` : "",
-    buttonText: isWakingUp ? "preparing..." : "download"
+    buttonText: isWakingUp ? "servers starting..." : "download"
   };
 
   // Placeholder for upcoming plugins
@@ -108,6 +115,32 @@ function App() {
         <div className={styles.page}>
           <BackgroundText />
           <div className={styles.blankTop}></div>
+          
+          {/* Backend status notification */}
+          {isWakingUp && (
+            <div className={styles.statusBanner}>
+              <div className={styles.statusContent}>
+                <div className={styles.spinner}></div>
+                <div className={styles.statusText}>
+                  <h3>Preparing Download Service</h3>
+                  <p>Waking up servers for instant downloads... This takes just a moment.</p>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Success notification */}
+          {showReadyMessage && (
+            <div className={styles.successBanner}>
+              <div className={styles.statusContent}>
+                <div className={styles.checkmark}>✓</div>
+                <div className={styles.statusText}>
+                  <h3>Downloads Ready!</h3>
+                  <p>All systems are now online. Click any plugin to download.</p>
+                </div>
+              </div>
+            </div>
+          )}
           
           {/* Sticky navigation banner */}
           <Banner />
@@ -147,11 +180,6 @@ function App() {
             <p>© 2025 dumumub</p>
             <p>all rights reserved</p>
             <p>made with ❤️ by dumumub</p>
-            {isWakingUp && (
-              <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: '10px' }}>
-                🔄 preparing download servers...
-              </p>
-            )}
           </div>
         </div>
       </div>
