@@ -200,7 +200,7 @@ Response: "BACKEND IS CONNECTED TO FRONTEND"
 
 ## 🎵 About dumumub
 
-DUMUMUB is an experimental audio plugin creation project run by a human person. The project intends to provide experimental audio plugins for musicians to utilize to produce and/or perform interesting sounds and/or music. The plugins are free. Enjoy.
+dumumub is an experimental audio plugin creation project run by a human person. The project intends to provide experimental audio plugins for musicians to utilize to produce and/or perform interesting sounds and/or music. The plugins are free. Enjoy.
 
 ### Current Plugins
 
@@ -224,6 +224,6 @@ More plugins coming soon...
 
 ---
 
-*Built with ❤️ by the dumumub*
+*built with ❤️ by the dumumub*
 
 
