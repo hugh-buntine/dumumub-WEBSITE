@@ -1,6 +1,6 @@
 # dumumub.com - Experimental Audio Plugin Distribution Platform
 
-🎵 **Live Website:** [https://dumumub.com](https://dumumub.com)
+**Live Website:** [https://dumumub.com](https://dumumub.com)
 
 An experimental audio plugin creation project featuring a modern, full-stack web application for distributing free VST plugins. dumumub provides unique, experimental audio tools for musicians to create interesting sounds and music, with an integrated email collection system and sleek, minimalist design.
 
@@ -19,7 +19,7 @@ An experimental audio plugin creation project featuring a modern, full-stack web
 ![Scroll Through Plugins](DEMO%20MEDIA/SCROLLTHROUGHPLUGINS.gif)
 *Clean, responsive plugin showcase with smooth animations*
 
-## 🚀 Features
+## Features
 
 - **Experimental Audio Plugins**: Free VST plugins for creative sound manipulation
   - **dumumub-0000003**: Wavetable synthesizer with drag-and-drop audio/image support
@@ -53,7 +53,7 @@ An experimental audio plugin creation project featuring a modern, full-stack web
 - **Domain**: GoDaddy DNS management with proper A records
 - **Version Control**: Git with GitHub repository management
 
-## 🏗️ Architecture & Design
+## Architecture & Design
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -75,14 +75,14 @@ An experimental audio plugin creation project featuring a modern, full-stack web
 - **Color System**: Custom SCSS variables for consistent branding
 - **Responsive Design**: Viewport-relative sizing for optimal mobile experience
 
-## 🌐 Deployment & Production
+## Deployment & Production
 
 ### Live URLs
 - **Primary Domain**: https://dumumub.com (Custom domain with SSL)
 - **Vercel Backup**: https://dumumubcom.vercel.app
 - **API Backend**: https://dumumub-com.onrender.com
 
-## 📊 Database Schema & API
+## Database Schema & API
 
 ### Email Collection Schema
 ```prisma
@@ -135,7 +135,7 @@ Response: "BACKEND IS CONNECTED TO FRONTEND"
 - **Incremental Updates**: New plugin downloads are added to existing user records
 - **Error Handling**: Graceful fallback with user-friendly error messages
 
-## 🎯 Technical Challenges Solved
+## Technical Challenges Solved
 
 ### 1. **Advanced CORS Configuration**
 - Multi-domain origin support for development and production environments
@@ -172,7 +172,7 @@ Response: "BACKEND IS CONNECTED TO FRONTEND"
 - Smart duplicate detection and user feedback
 - Non-intrusive design that maintains user experience flow
 
-## 🚀 Future Enhancements & Roadmap
+## Future Enhancements & Roadmap
 
 ### Phase 1: User Experience
 - [ ] **User Authentication System**: Login/signup with session management
@@ -198,7 +198,7 @@ Response: "BACKEND IS CONNECTED TO FRONTEND"
 - [ ] **Developer API**: Third-party integration capabilities
 - [ ] **Mobile App**: Native iOS/Android application
 
-## 🎵 About dumumub
+## About dumumub
 
 dumumub is an experimental audio plugin creation project run by a human person. The project intends to provide experimental audio plugins for musicians to utilize to produce and/or perform interesting sounds and/or music. The plugins are free. Enjoy.
 
